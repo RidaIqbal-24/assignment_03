@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Admission Form.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1><b>Student Admission Form</b></h1><br>
+
+    <!-- main form: all inputs, selects, radios, checkboxes, textarea, button -->
+    <form action="#" method="post" novalidate>
+      
+      <!-- ========== PART 1: PERSONAL INFORMATION ========== -->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <!-- Full Name -->
+        <div class="field-row">
+          <label for="fullName"><b>Full Name</b> </label>
+          <input type="text" id="fullName" name="fullName" 
+                 required minlength="3" 
+                 placeholder="Samira Khan"
+                 aria-required="true"
+                 autocomplete="name">
+          <div class="hint">At least 3 characters (fictional name).</div>
+        </div>
+       
+
+        <!-- Email -->
+        <div class="field-row">
+          <label for="email"><b>Email Address</b></label>
+          <input type="email" id="email" name="email" 
+                 required 
+                 placeholder="student@example.com"
+                 aria-required="true"
+                 autocomplete="email">
+          <div class="hint">Use a correct email </div>
+        </div>
+
+        <!-- Phone Number (bonus: improved pattern) -->
+        <div class="field-row">
+          <label for="phone"><b>Phone Number</b></label>
+          <input type="tel" id="phone" name="phone" 
+                 placeholder="+1 555 123 4567"
+                 pattern="[+0-9\s\-\(\)]{7,20}"
+                 title="7 to 20 digits, may include +, -, spaces, parentheses">
+          <div class="hint">Optional · Format: +1 555 123 4567 (7–20 chars, allowed: digits, +, -, (), spaces).</div>
+        </div>
+
+        <!-- Age -->
+        <div class="field-row">
+          <label for="age"><b>Age</b></label>
+          <input type="number" id="age" name="age" 
+                 required 
+                 min="16" max="60" 
+                 step="1"
+                 placeholder="18">
+          <div class="hint">Must be between 16 and 60.</div>
+        </div>
+
+        <!-- City Dropdown -->
+        <div class="field-row">
+          <label for="city"><b>City</b></label>
+          <select id="city" name="city" required aria-required="true">
+            <option value="" disabled selected>— Select your city —</option>
+            <option value="Karachi">Karachi</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Islamabad">Islamabad</option>
+            <option value="Peshawar">Peshawar</option>
+            <option value="Quetta">Quetta</option>
+          </select>
+        </div>
+
+        <!-- BONUS: Portfolio URL (optional) -->
+        <div class="field-row bonus-field">
+          <label for="portfolio"><b>Portfolio URL (optional)</b></label>
+          <input type="url" id="portfolio" name="portfolio" 
+                 placeholder="https://yourportfolio.example">
+          <div class="hint">Bonus field — valid URL only.</div>
+        </div>
+
+        <!-- BONUS: Preferred starting date -->
+        <div class="field-row bonus-field">
+          <label for="startDate"><b>Preferred Starting Date (optional)</b></label>
+          <input type="date" id="startDate" name="startDate" 
+                 min="2025-01-01" max="2026-12-31">
+          <div class="hint">Bonus field — any future date.</div>
+        </div>
+      </fieldset>
+
+      <!-- ========== PART 2: COURSE SELECTION ========== -->
+      <fieldset>
+        <legend>Course Selection</legend>
+        <div class="field-row">
+          <label for="course"><b>Choose a course</b></label>
+          <select id="course" name="course" required aria-required="true">
+            <option value="" disabled selected>— Select a course —</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+          </select>
+          <div class="hint">One course must be selected.</div>
+        </div>
+      </fieldset>
+
+      <!-- ========== PART 3: PREFERRED CLASS SHIFT (RADIO) ========== -->
+      <fieldset>
+        <legend> Preferred Class Shift</legend>
+        <div class="radio-group" role="radiogroup" aria-label="Preferred class shift">
+          <label class="radio-option">
+            <input type="radio" name="shift" value="Morning" required>
+            Morning
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="shift" value="Evening">
+            Evening
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="shift" value="Weekend">
+            Weekend
+          </label>
+        </div>
+        <div class="hint" style="margin-top: 0.7rem;">Only one shift can be selected. Selection is required.</div>
+      </fieldset>
+
+      <!-- ========== PART 4: EXISTING SKILLS (CHECKBOXES) ========== -->
+      <fieldset>
+        <legend> Existing Skills (optional)</legend>
+        <div class="checkbox-group" role="group" aria-label="Existing skills">
+          <label class="checkbox-option">
+            <input type="checkbox" name="skills" value="HTML">
+            HTML
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="skills" value="CSS">
+            CSS
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="skills" value="JavaScript">
+            JavaScript
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="skills" value="Python">
+            Python
+          </label>
+        </div>
+        <div class="hint" style="margin-top: 0.8rem;">Select all that apply — completely optional.</div>
+      </fieldset>
+
+      <!-- ========== PART 5: MOTIVATION (TEXTAREA) ========== -->
+      <fieldset>
+        <legend> Motivation</legend>
+        <div class="field-row">
+          <label for="motivation">Why do you want to join this course? <span class="required-indicator">*</span></label>
+          <textarea id="motivation" name="motivation" 
+                    required minlength="10" maxlength="200"
+                    placeholder="Write 10 to 200 characters (fictional response)..."
+                    aria-required="true"></textarea>
+          <div class="hint">Required · min 10 · max 200 characters.</div>
+        </div>
+      </fieldset>
+
+      <!-- submit button -->
+      <div class="button-bar">
+        <button type="submit"> Submit Application</button>
+      </div>
+
+     
+    </form>
+  </div>
+
+  <!-- no JavaScript, no backend — pure HTML5 validation 
+       (browser will block submission if required fields are empty or invalid) -->
+</body>
+</html>
